@@ -1,15 +1,14 @@
 import java.util.*;
 import java.io.*;
 import java.lang.Math;
-//TODO: Similar word (see NB tag)
 
 class main{
   public static void main(String[] args) {
+    int depthCurrent = 0;
     String file = "dictionary.txt";
     BinarySearchTree<String> tree = new BinarySearchTree<String>();
+    PrintWriter output = null;
     Scanner in = new Scanner(System.in);
-
-
     try{
     Scanner scan = new Scanner(new File(file));
 
@@ -22,6 +21,9 @@ class main{
       e.printStackTrace();
       System.exit(1);
     }
+    try{
+        output = new PrintWriter("Statistics.txt", "UTF-8");
+
     String input = "";
     while(!(input.equalsIgnoreCase("Q"))){
       System.out.println("\n-----------------------------");
@@ -52,7 +54,10 @@ class main{
                         }
                         boolean tru = tree.searchWord(words[i]);
                         if(tru){
+                          System.out.println("");
                           System.out.println("Did you mean " + words[i] + " instead?");
+                          output.printf("-----Similar words----- \n");
+                          output.printf("Did you mean " + words[i] + " instead?\n");
                         }
                       }
                   }
@@ -64,13 +69,26 @@ class main{
         case "q": System.out.println("First alphabetically word: " + tree.min());
                   System.out.println("Last alphabetically word: " + tree.max());
                   System.out.println("depth of Tree: " + tree.findDepth());
-                  System.out.println("Median of all nodes: " + Math.log(tree.averageNodes())/Math.log(2));
-                  System.out.println("average Depth of all nodes: " + (tree.averageNodes()/tree.sumOfNodes()));
+                  System.out.println("average Depth of all nodes: " + (tree.sumDepth()/tree.sumOfNodes()));
+                  System.out.println("Nodes per depth:");
+                  for (int number : tree.getDepthByNode()){System.out.println( depthCurrent +": " + number + " nodes"); depthCurrent++;}
+                  output.printf("First alphabetically word: " + tree.min() + "\n");
+                  output.printf("Last alphabetically word: " + tree.max() + "\n");
+                  output.printf("depth of Tree: " + tree.findDepth() + "\n");
+                  output.printf("average Depth of all nodes: " + (tree.sumDepth()/tree.sumOfNodes()) + "\n");
+                  depthCurrent = 0;
+                  for (int number : tree.getDepthByNode()){output.printf( depthCurrent +": " + number + " nodes \n"); depthCurrent++;}
 
                   break;
         default:  System.out.println("not a valid input");
                   break;
       }
     }
+  }catch(IOException e){
+    System.out.println("could not write to file");
+    e.printStackTrace();
+  } finally{
+    output.close();
+  }
   }
 }

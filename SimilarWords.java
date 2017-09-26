@@ -44,7 +44,6 @@ public void replaceOneLetter() {
     for (int j = 0; j < alphabet.length; j++) {
       char[] newWord = word.toCharArray();
       newWord[i] = alphabet[j];
-
       similar[insert++] = new String(newWord);
     }
   }

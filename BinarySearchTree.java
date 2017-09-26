@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 class BinarySearchTree<T extends Comparable<? super T>>{
 
   private static class Node<T>{
+    int currDepth;
     Node<T> left;
     Node<T> right;
     T data;
@@ -15,6 +17,8 @@ class BinarySearchTree<T extends Comparable<? super T>>{
   }
 
   private Node<T> root;
+  private int[] depthNode;
+  private int curr = 0;
 
   BinarySearchTree(){
     root = null;
@@ -136,12 +140,15 @@ public Node<T> min(Node<T> t){
       int depth = (leftD > rightD) ? (leftD + 1) : (rightD + 1);
       return depth;
     }
-    public float averageNodes(){
-      return averageNodes(root, 0);
+    public float sumDepth(){
+      depthNode = new int[findDepth()];
+      return sumDepth(root, 0);
     }
-    private float averageNodes(Node<T> n, float depth){
+    private float sumDepth(Node<T> n, float depth){
       if(n == null){return 0;}
-      return depth + averageNodes(n.left, depth + 1) + averageNodes(n.right, depth + 1);
+      curr = (int) depth;
+      depthNode[curr]++;
+      return depth + sumDepth(n.left, depth + 1) + sumDepth(n.right, depth + 1);
     }
 
     public int sumOfNodes(){
@@ -151,18 +158,8 @@ public Node<T> min(Node<T> t){
       if(n == null){return 0;}
       return 1 + sumOfNodes(n.left) + sumOfNodes(n.right);
     }
-  //  int index = 0;
-  //  public float findMedian(){
-  //    return findMedian(root);
-  //  }
-//    private float findMedian(Node<T> n){
-//      if (n == null){
-//        return null;
-//      }
-//      t = findMedian(n.left);
-//      if(t != null){
-//        return t;
-//      }
-//    }
+  public int[] getDepthByNode(){
+    return depthNode;
+  }
 
 }

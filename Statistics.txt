@@ -1,0 +1,42 @@
+Did you mean cost instead?
+First alphabetically word: abactinally
+Last alphabetically word: darndests
+depth of Tree: 37
+average Depth of all nodes: 19.650787
+0: 1 nodes 
+1: 2 nodes 
+2: 4 nodes 
+3: 8 nodes 
+4: 16 nodes 
+5: 32 nodes 
+6: 64 nodes 
+7: 121 nodes 
+8: 218 nodes 
+9: 383 nodes 
+10: 628 nodes 
+11: 990 nodes 
+12: 1513 nodes 
+13: 2208 nodes 
+14: 2949 nodes 
+15: 3889 nodes 
+16: 4772 nodes 
+17: 5670 nodes 
+18: 6251 nodes 
+19: 6688 nodes 
+20: 6690 nodes 
+21: 6448 nodes 
+22: 5890 nodes 
+23: 5101 nodes 
+24: 4244 nodes 
+25: 3254 nodes 
+26: 2395 nodes 
+27: 1789 nodes 
+28: 1177 nodes 
+29: 705 nodes 
+30: 429 nodes 
+31: 236 nodes 
+32: 138 nodes 
+33: 60 nodes 
+34: 25 nodes 
+35: 9 nodes 
+36: 3 nodes 
